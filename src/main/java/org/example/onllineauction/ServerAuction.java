@@ -69,18 +69,18 @@ public class ServerAuction {
         public void run() {
             try {
                 out.println("Welcome to Auction for " + playername + ". Starting amount: " + startingAmount);
-                out.println("Enter your username and bid amount in the format 'username amount': ");
+                out.println("Enter your team name and bid amount in the format ' Team Name Amount': ");
                 String input;
                 while ((input = in.readLine()) != null) {
-                    System.out.println("Team " + input + " Says: " + input);
-
+                    String[] inputArgs = input.split(" ");
                     if (input.equals("stop")) {
                         stopAuction();
                         return;
                     }
 
+                    System.out.println("Team " + inputArgs[0] + " says: " + inputArgs[1]);
+
                     try {
-                        String[] inputArgs = input.split(" ");
                         if (inputArgs.length != 2) {
                             out.println("Invalid input format.");
                             continue;
@@ -93,11 +93,12 @@ public class ServerAuction {
                         }
 
                         bids.put(username, bid);
-                        out.println("Bid placed successfully.");
+                        out.println(username + " Bidding " + bid );
                     } catch (NumberFormatException e) {
                         out.println("Invalid input. Please enter a number as your bid.");
                     }
                 }
+
 
             } catch (IOException e) {
                 e.printStackTrace();

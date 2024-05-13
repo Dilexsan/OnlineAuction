@@ -51,7 +51,7 @@ public class ClientAuction extends Application {
         inputBox.getChildren().addAll(inputLabel, inputField, bidButton, stopButton);
         root.getChildren().add(inputBox);
 
-        primaryStage.setScene(new Scene(root, 400, 300));
+        primaryStage.setScene(new Scene(root, 600, 400));
         primaryStage.setTitle("Auction Client");
         primaryStage.setOnCloseRequest(e -> System.exit(0));
         primaryStage.show();
